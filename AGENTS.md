@@ -1,4 +1,5 @@
 <!-- LOVABLE:BEGIN -->
+
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits
@@ -27,9 +28,15 @@ use the editor.
   `LOVABLE_API_KEY`. When Lovable does not provide one, users can bring their
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
+
 <!-- LOVABLE:END -->
 
 ## Application rules
-- Keep Phase 1 data in browser-safe mock-data modules and mutations as explicit unsaved previews; this isolates the visual foundation from future backend work.
+
+- Isolate development data and session adapters behind typed interfaces; all preview edits remain in memory and never imply production persistence or authentication.
 - Use a shared application shell around the root Outlet and one leaf route per navigation destination; this keeps navigation consistent and allows later pages to be implemented independently.
 - Keep gym presentation tokens and responsive styles in the global stylesheet; this preserves the strict brand palette across controls and charts.
+
+- Centralize permissions in the domain access module and gate the shared shell before rendering protected content; production must replace development identity with server-verified roles.
+- Preserve date-only inputs as validated YYYY-MM-DD strings and format with UTC calendar semantics; this prevents selected dates shifting across timezones.
+- Use un-nested member detail/edit leaf routes and reusable module tables/forms; this prevents parent-list rendering from masking detail pages.

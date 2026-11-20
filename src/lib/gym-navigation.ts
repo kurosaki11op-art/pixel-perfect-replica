@@ -13,6 +13,7 @@ import {
   Workflow,
   ClipboardList,
   Settings,
+  UserRound,
 } from "lucide-react";
 export const navigation = [
   { label: "Dashboard", to: "/", icon: LayoutDashboard, group: "main" },
@@ -23,10 +24,12 @@ export const navigation = [
   { label: "Appointments", to: "/appointments", icon: CalendarDays, group: "main" },
   { label: "Income", to: "/income", icon: IndianRupee, group: "main" },
   { label: "Expenses", to: "/expenses", icon: Wallet, group: "main" },
-  { label: "Trainers & Staff", to: "/trainers-staff", icon: UserRoundCog, group: "main" },
+  { label: "Staff & Trainers", to: "/trainers-staff", icon: UserRoundCog, group: "main" },
   { label: "Analytics", to: "/analytics", icon: ChartNoAxesCombined, group: "management" },
   { label: "Reports", to: "/reports", icon: FileChartColumn, group: "management" },
   { label: "Automation Center", to: "/automation-center", icon: Workflow, group: "management" },
   { label: "Audit Logs", to: "/audit-logs", icon: ClipboardList, group: "system" },
   { label: "Settings", to: "/settings", icon: Settings, group: "system" },
 ] as const;
+
+export const staffNavigation = [navigation[0],navigation[1],navigation[2],{label:"Plans",to:"/plans",icon:Tags,group:"main"},navigation[4],navigation[5],{label:"Payments",to:"/payments",icon:IndianRupee,group:"main"},{label:"Profile",to:"/profile",icon:UserRound,group:"system"}] as const;

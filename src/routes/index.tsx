@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Dashboard } from "@/components/gym/dashboard";
+import { StaffDashboard, DashboardExtras } from "@/components/gym/insights-pages";
+import { useWorkspace } from "@/components/gym/workspace-provider";
 
 // The home route ships no og:image, so serve-time hosting can inject the
 // project's social preview (explicit og:image or latest screenshot).
@@ -22,5 +24,17 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Dashboard,
+  component: HomeDashboard,
 });
+
+function HomeDashboard() {
+  const { session } = useWorkspace();
+  return session?.role === "staff" ? (
+    <StaffDashboard />
+  ) : (
+    <>
+      <Dashboard />
+      <DashboardExtras />
+    </>
+  );
+}

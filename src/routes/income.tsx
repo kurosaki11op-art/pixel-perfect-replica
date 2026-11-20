@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/gym/page-shell";
+import { IncomePage } from "@/components/gym/insights-pages";
 export const Route = createFileRoute("/income")({
   head: () => ({
     meta: [
@@ -14,5 +14,5 @@ export const Route = createFileRoute("/income")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: () => <PageShell title="Income" />,
+  component: () => <IncomePage />,
 });

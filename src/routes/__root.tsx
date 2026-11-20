@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/gym/app-shell";
+import { WorkspaceProvider } from "@/components/gym/workspace-provider";
 
 function NotFoundComponent() {
   return (
@@ -133,9 +134,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <AppShell>
-        <Outlet />
-      </AppShell>
+      <WorkspaceProvider>
+        <AppShell>
+          <Outlet />
+        </AppShell>
+      </WorkspaceProvider>
     </QueryClientProvider>
   );
 }

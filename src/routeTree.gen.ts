@@ -10,23 +10,46 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountDisabledRouteImport } from './routes/account-disabled'
+import { Route as AdminLoginRouteImport } from './routes/admin-login'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AppointmentsRouteImport } from './routes/appointments'
 import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as AuditLogsRouteImport } from './routes/audit-logs'
 import { Route as AutomationCenterRouteImport } from './routes/automation-center'
 import { Route as ExpensesRouteImport } from './routes/expenses'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IncomeRouteImport } from './routes/income'
 import { Route as MembersRouteImport } from './routes/members'
 import { Route as MembershipsRouteImport } from './routes/memberships'
+import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as PlansRouteImport } from './routes/plans'
 import { Route as PlansOffersRouteImport } from './routes/plans-offers'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as SessionExpiredRouteImport } from './routes/session-expired'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StaffLoginRouteImport } from './routes/staff-login'
 import { Route as TrainersStaffRouteImport } from './routes/trainers-staff'
+import { Route as UnauthorizedRouteImport } from './routes/unauthorized'
+import { Route as MembersMemberIdRouteImport } from './routes/members_.$memberId'
+import { Route as MembersNewRouteImport } from './routes/members_.new'
+import { Route as MembersMemberIdEditRouteImport } from './routes/members_.$memberId_.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountDisabledRoute = AccountDisabledRouteImport.update({
+  id: '/account-disabled',
+  path: '/account-disabled',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin-login',
+  path: '/admin-login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
@@ -59,6 +82,11 @@ const ExpensesRoute = ExpensesRouteImport.update({
   path: '/expenses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IncomeRoute = IncomeRouteImport.update({
   id: '/income',
   path: '/income',
@@ -74,9 +102,24 @@ const MembershipsRoute = MembershipsRouteImport.update({
   path: '/memberships',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlansRoute = PlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlansOffersRoute = PlansOffersRouteImport.update({
   id: '/plans-offers',
   path: '/plans-offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -84,9 +127,24 @@ const ReportsRoute = ReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SessionExpiredRoute = SessionExpiredRouteImport.update({
+  id: '/session-expired',
+  path: '/session-expired',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffLoginRoute = StaffLoginRouteImport.update({
+  id: '/staff-login',
+  path: '/staff-login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainersStaffRoute = TrainersStaffRouteImport.update({
@@ -94,122 +152,233 @@ const TrainersStaffRoute = TrainersStaffRouteImport.update({
   path: '/trainers-staff',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UnauthorizedRoute = UnauthorizedRouteImport.update({
+  id: '/unauthorized',
+  path: '/unauthorized',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersMemberIdRoute = MembersMemberIdRouteImport.update({
+  id: '/members_/$memberId',
+  path: '/members/$memberId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersNewRoute = MembersNewRouteImport.update({
+  id: '/members_/new',
+  path: '/members/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersMemberIdEditRoute = MembersMemberIdEditRouteImport.update({
+  id: '/members_/$memberId_/edit',
+  path: '/members/$memberId/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account-disabled': typeof AccountDisabledRoute
+  '/admin-login': typeof AdminLoginRoute
   '/analytics': typeof AnalyticsRoute
   '/appointments': typeof AppointmentsRoute
   '/attendance': typeof AttendanceRoute
   '/audit-logs': typeof AuditLogsRoute
   '/automation-center': typeof AutomationCenterRoute
   '/expenses': typeof ExpensesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/income': typeof IncomeRoute
   '/members': typeof MembersRoute
   '/memberships': typeof MembershipsRoute
+  '/payments': typeof PaymentsRoute
+  '/plans': typeof PlansRoute
   '/plans-offers': typeof PlansOffersRoute
+  '/profile': typeof ProfileRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/session-expired': typeof SessionExpiredRoute
   '/settings': typeof SettingsRoute
+  '/staff-login': typeof StaffLoginRoute
   '/trainers-staff': typeof TrainersStaffRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/members/$memberId': typeof MembersMemberIdRoute
+  '/members/new': typeof MembersNewRoute
+  '/members/$memberId/edit': typeof MembersMemberIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account-disabled': typeof AccountDisabledRoute
+  '/admin-login': typeof AdminLoginRoute
   '/analytics': typeof AnalyticsRoute
   '/appointments': typeof AppointmentsRoute
   '/attendance': typeof AttendanceRoute
   '/audit-logs': typeof AuditLogsRoute
   '/automation-center': typeof AutomationCenterRoute
   '/expenses': typeof ExpensesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/income': typeof IncomeRoute
   '/members': typeof MembersRoute
   '/memberships': typeof MembershipsRoute
+  '/payments': typeof PaymentsRoute
+  '/plans': typeof PlansRoute
   '/plans-offers': typeof PlansOffersRoute
+  '/profile': typeof ProfileRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/session-expired': typeof SessionExpiredRoute
   '/settings': typeof SettingsRoute
+  '/staff-login': typeof StaffLoginRoute
   '/trainers-staff': typeof TrainersStaffRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/members/$memberId': typeof MembersMemberIdRoute
+  '/members/new': typeof MembersNewRoute
+  '/members/$memberId/edit': typeof MembersMemberIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account-disabled': typeof AccountDisabledRoute
+  '/admin-login': typeof AdminLoginRoute
   '/analytics': typeof AnalyticsRoute
   '/appointments': typeof AppointmentsRoute
   '/attendance': typeof AttendanceRoute
   '/audit-logs': typeof AuditLogsRoute
   '/automation-center': typeof AutomationCenterRoute
   '/expenses': typeof ExpensesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/income': typeof IncomeRoute
   '/members': typeof MembersRoute
   '/memberships': typeof MembershipsRoute
+  '/payments': typeof PaymentsRoute
+  '/plans': typeof PlansRoute
   '/plans-offers': typeof PlansOffersRoute
+  '/profile': typeof ProfileRoute
   '/reports': typeof ReportsRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/session-expired': typeof SessionExpiredRoute
   '/settings': typeof SettingsRoute
+  '/staff-login': typeof StaffLoginRoute
   '/trainers-staff': typeof TrainersStaffRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/members_/$memberId': typeof MembersMemberIdRoute
+  '/members_/new': typeof MembersNewRoute
+  '/members_/$memberId_/edit': typeof MembersMemberIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/account-disabled'
+    | '/admin-login'
     | '/analytics'
     | '/appointments'
     | '/attendance'
     | '/audit-logs'
     | '/automation-center'
     | '/expenses'
+    | '/forgot-password'
     | '/income'
     | '/members'
     | '/memberships'
+    | '/payments'
+    | '/plans'
     | '/plans-offers'
+    | '/profile'
     | '/reports'
+    | '/reset-password'
+    | '/session-expired'
     | '/settings'
+    | '/staff-login'
     | '/trainers-staff'
+    | '/unauthorized'
+    | '/members/$memberId'
+    | '/members/new'
+    | '/members/$memberId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/account-disabled'
+    | '/admin-login'
     | '/analytics'
     | '/appointments'
     | '/attendance'
     | '/audit-logs'
     | '/automation-center'
     | '/expenses'
+    | '/forgot-password'
     | '/income'
     | '/members'
     | '/memberships'
+    | '/payments'
+    | '/plans'
     | '/plans-offers'
+    | '/profile'
     | '/reports'
+    | '/reset-password'
+    | '/session-expired'
     | '/settings'
+    | '/staff-login'
     | '/trainers-staff'
+    | '/unauthorized'
+    | '/members/$memberId'
+    | '/members/new'
+    | '/members/$memberId/edit'
   id:
     | '__root__'
     | '/'
+    | '/account-disabled'
+    | '/admin-login'
     | '/analytics'
     | '/appointments'
     | '/attendance'
     | '/audit-logs'
     | '/automation-center'
     | '/expenses'
+    | '/forgot-password'
     | '/income'
     | '/members'
     | '/memberships'
+    | '/payments'
+    | '/plans'
     | '/plans-offers'
+    | '/profile'
     | '/reports'
+    | '/reset-password'
+    | '/session-expired'
     | '/settings'
+    | '/staff-login'
     | '/trainers-staff'
+    | '/unauthorized'
+    | '/members_/$memberId'
+    | '/members_/new'
+    | '/members_/$memberId_/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountDisabledRoute: typeof AccountDisabledRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   AnalyticsRoute: typeof AnalyticsRoute
   AppointmentsRoute: typeof AppointmentsRoute
   AttendanceRoute: typeof AttendanceRoute
   AuditLogsRoute: typeof AuditLogsRoute
   AutomationCenterRoute: typeof AutomationCenterRoute
   ExpensesRoute: typeof ExpensesRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   IncomeRoute: typeof IncomeRoute
   MembersRoute: typeof MembersRoute
   MembershipsRoute: typeof MembershipsRoute
+  PaymentsRoute: typeof PaymentsRoute
+  PlansRoute: typeof PlansRoute
   PlansOffersRoute: typeof PlansOffersRoute
+  ProfileRoute: typeof ProfileRoute
   ReportsRoute: typeof ReportsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SessionExpiredRoute: typeof SessionExpiredRoute
   SettingsRoute: typeof SettingsRoute
+  StaffLoginRoute: typeof StaffLoginRoute
   TrainersStaffRoute: typeof TrainersStaffRoute
+  UnauthorizedRoute: typeof UnauthorizedRoute
+  MembersMemberIdRoute: typeof MembersMemberIdRoute
+  MembersNewRoute: typeof MembersNewRoute
+  MembersMemberIdEditRoute: typeof MembersMemberIdEditRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,6 +388,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account-disabled': {
+      id: '/account-disabled'
+      path: '/account-disabled'
+      fullPath: '/account-disabled'
+      preLoaderRoute: typeof AccountDisabledRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-login': {
+      id: '/admin-login'
+      path: '/admin-login'
+      fullPath: '/admin-login'
+      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analytics': {
@@ -263,6 +446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExpensesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/income': {
       id: '/income'
       path: '/income'
@@ -284,11 +474,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MembershipsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plans': {
+      id: '/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plans-offers': {
       id: '/plans-offers'
       path: '/plans-offers'
       fullPath: '/plans-offers'
       preLoaderRoute: typeof PlansOffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -298,11 +509,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/session-expired': {
+      id: '/session-expired'
+      path: '/session-expired'
+      fullPath: '/session-expired'
+      preLoaderRoute: typeof SessionExpiredRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff-login': {
+      id: '/staff-login'
+      path: '/staff-login'
+      fullPath: '/staff-login'
+      preLoaderRoute: typeof StaffLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trainers-staff': {
@@ -312,24 +544,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainersStaffRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/unauthorized': {
+      id: '/unauthorized'
+      path: '/unauthorized'
+      fullPath: '/unauthorized'
+      preLoaderRoute: typeof UnauthorizedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members_/$memberId': {
+      id: '/members_/$memberId'
+      path: '/members/$memberId'
+      fullPath: '/members/$memberId'
+      preLoaderRoute: typeof MembersMemberIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members_/new': {
+      id: '/members_/new'
+      path: '/members/new'
+      fullPath: '/members/new'
+      preLoaderRoute: typeof MembersNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members_/$memberId_/edit': {
+      id: '/members_/$memberId_/edit'
+      path: '/members/$memberId/edit'
+      fullPath: '/members/$memberId/edit'
+      preLoaderRoute: typeof MembersMemberIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountDisabledRoute: AccountDisabledRoute,
+  AdminLoginRoute: AdminLoginRoute,
   AnalyticsRoute: AnalyticsRoute,
   AppointmentsRoute: AppointmentsRoute,
   AttendanceRoute: AttendanceRoute,
   AuditLogsRoute: AuditLogsRoute,
   AutomationCenterRoute: AutomationCenterRoute,
   ExpensesRoute: ExpensesRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   IncomeRoute: IncomeRoute,
   MembersRoute: MembersRoute,
   MembershipsRoute: MembershipsRoute,
+  PaymentsRoute: PaymentsRoute,
+  PlansRoute: PlansRoute,
   PlansOffersRoute: PlansOffersRoute,
+  ProfileRoute: ProfileRoute,
   ReportsRoute: ReportsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SessionExpiredRoute: SessionExpiredRoute,
   SettingsRoute: SettingsRoute,
+  StaffLoginRoute: StaffLoginRoute,
   TrainersStaffRoute: TrainersStaffRoute,
+  UnauthorizedRoute: UnauthorizedRoute,
+  MembersMemberIdRoute: MembersMemberIdRoute,
+  MembersNewRoute: MembersNewRoute,
+  MembersMemberIdEditRoute: MembersMemberIdEditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/gym/page-shell";
+import { ModulePage } from "@/components/gym/module-page";
 export const Route = createFileRoute("/plans-offers")({
   head: () => ({
     meta: [
@@ -17,5 +17,5 @@ export const Route = createFileRoute("/plans-offers")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: () => <PageShell title="Plans & Offers" />,
+  component: () => <ModulePage module="plans" />,
 });

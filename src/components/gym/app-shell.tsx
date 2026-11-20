@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, Navigate, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
   ChevronDown,
@@ -13,6 +13,7 @@ import {
   Settings,
   UserRound,
   X,
+  LogOut,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,12 +26,25 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { navigation } from "@/lib/gym-navigation";
+import { navigation, staffNavigation } from "@/lib/gym-navigation";
 import { notifications } from "@/lib/gym-data";
+import { useWorkspace } from "./workspace-provider";
+import { publicPaths, canAccess } from "@/lib/gym/permissions";
+import { LoadingSkeleton, ErrorState } from "./shared";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const current = navigation.find((item) => item.to === pathname)?.label ?? "Dashboard";
+  const { session, loading, error, reload, logout } = useWorkspace();
+  const navigate = useNavigate();
+  const visibleNavigation =
+    session?.role === "staff"
+      ? staffNavigation
+      : [
+          ...navigation.slice(0, 8),
+          { label: "Payments", to: "/payments" as const, icon: Bell, group: "main" },
+          ...navigation.slice(8),
+        ];
+  const current = visibleNavigation.find((item) => item.to === pathname)?.label ?? "Dashboard";
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -60,13 +74,18 @@ export function AppShell({ children }: { children: ReactNode }) {
     document.addEventListener("keydown", close);
     return () => document.removeEventListener("keydown", close);
   }, [mobileOpen]);
-  const matches = navigation.filter((item) =>
+  const matches = visibleNavigation.filter((item) =>
     item.label.toLowerCase().includes(search.toLowerCase()),
   );
   function toggleSidebar() {
     if (window.matchMedia("(max-width: 760px)").matches) setMobileOpen(!mobileOpen);
     else setCollapsed(!collapsed);
   }
+  if (publicPaths.includes(pathname)) return <>{children}</>;
+  if (loading) return <LoadingSkeleton />;
+  if (error) return <ErrorState message={error} retry={reload} />;
+  if (!session) return <Navigate to="/admin-login" />;
+  if (!canAccess(session.role, pathname)) return <Navigate to="/unauthorized" />;
   return (
     <>
       {mobileOpen && (
@@ -91,7 +110,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </Link>
         <nav className="sidebar-nav">
           {!collapsed && <div className="sidebar-label">WORKSPACE</div>}
-          {navigation.map((item, index) => (
+          {visibleNavigation.map((item, index) => (
             <div key={item.to}>
               {(index === 9 || index === 12) && (
                 <>
@@ -120,7 +139,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
           {!collapsed && (
             <div className="sidebar-bottom-copy">
-              <div className="text-[11px] font-medium">Admin workspace</div>
+              <div className="text-[11px] font-medium">
+                {session?.role === "staff" ? "Staff workspace" : "Admin workspace"}
+              </div>
               <div className="mt-1 text-[9px] text-subtle">Believer Gym · Demo preview</div>
             </div>
           )}
@@ -194,27 +215,48 @@ export function AppShell({ children }: { children: ReactNode }) {
                 aria-label="Admin profile"
               >
                 <div className="flex items-center gap-9">
-                  <div className="member-avatar tint">A</div>
+                  <div className="member-avatar tint">{session?.role === "staff" ? "T" : "A"}</div>
                   <div className="profile-copy text-left">
-                    <div className="text-[11px] font-semibold">Admin</div>
-                    <div className="mt-1 text-[9px] text-subtle">Administrator</div>
+                    <div className="text-[11px] font-semibold">{session?.name}</div>
+                    <div className="mt-1 text-[9px] text-subtle">
+                      {session?.role === "staff" ? "Trainer · Staff" : "Administrator"}
+                    </div>
                   </div>
                 </div>
                 <ChevronDown size={13} className="profile-chevron text-subtle" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuLabel>Admin workspace</DropdownMenuLabel>
+              <DropdownMenuLabel>
+                {session?.role === "staff" ? "Staff workspace" : "Admin workspace"}
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem onSelect={() => setProfileOpen(true)}>
                 <UserRound />
                 My profile
               </DropdownMenuItem>
+              {session?.role === "admin" && (
+                <DropdownMenuItem asChild>
+                  <Link to="/settings">
+                    <Settings />
+                    Settings
+                  </Link>
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem asChild>
-                <Link to="/settings">
-                  <Settings />
-                  Settings
+                <Link to="/profile">
+                  <UserRound />
+                  Profile & preferences
                 </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onSelect={async () => {
+                  await logout();
+                  await navigate({ to: "/admin-login" });
+                }}
+              >
+                <LogOut />
+                Logout preview
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuLabel className="text-[10px] font-normal text-subtle">
@@ -247,10 +289,12 @@ export function AppShell({ children }: { children: ReactNode }) {
           <DialogTitle>Admin profile</DialogTitle>
           <DialogDescription>Demonstration account</DialogDescription>
           <div className="flex items-center gap-4 py-4">
-            <div className="member-avatar tint">A</div>
+            <div className="member-avatar tint">{session?.role === "staff" ? "T" : "A"}</div>
             <div>
-              <p className="font-medium">Admin</p>
-              <p className="mt-1 text-xs text-muted-foreground">Administrator · Believer Gym</p>
+              <p className="font-medium">{session?.name}</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {session?.role === "staff" ? "Trainer · Staff" : "Administrator"} · Believer Gym
+              </p>
             </div>
           </div>
           <Button variant="outline" onClick={() => setProfileOpen(false)}>
