@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application rules
+- Keep Phase 1 data in browser-safe mock-data modules and mutations as explicit unsaved previews; this isolates the visual foundation from future backend work.
+- Use a shared application shell around the root Outlet and one leaf route per navigation destination; this keeps navigation consistent and allows later pages to be implemented independently.
+- Keep gym presentation tokens and responsive styles in the global stylesheet; this preserves the strict brand palette across controls and charts.

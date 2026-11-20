@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AppointmentsRouteImport } from './routes/appointments'
+import { Route as AttendanceRouteImport } from './routes/attendance'
+import { Route as AuditLogsRouteImport } from './routes/audit-logs'
+import { Route as AutomationCenterRouteImport } from './routes/automation-center'
+import { Route as ExpensesRouteImport } from './routes/expenses'
+import { Route as IncomeRouteImport } from './routes/income'
+import { Route as MembersRouteImport } from './routes/members'
+import { Route as MembershipsRouteImport } from './routes/memberships'
+import { Route as PlansOffersRouteImport } from './routes/plans-offers'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TrainersStaffRouteImport } from './routes/trainers-staff'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppointmentsRoute = AppointmentsRouteImport.update({
+  id: '/appointments',
+  path: '/appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceRoute = AttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditLogsRoute = AuditLogsRouteImport.update({
+  id: '/audit-logs',
+  path: '/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationCenterRoute = AutomationCenterRouteImport.update({
+  id: '/automation-center',
+  path: '/automation-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExpensesRoute = ExpensesRouteImport.update({
+  id: '/expenses',
+  path: '/expenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncomeRoute = IncomeRouteImport.update({
+  id: '/income',
+  path: '/income',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersRoute = MembersRouteImport.update({
+  id: '/members',
+  path: '/members',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipsRoute = MembershipsRouteImport.update({
+  id: '/memberships',
+  path: '/memberships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlansOffersRoute = PlansOffersRouteImport.update({
+  id: '/plans-offers',
+  path: '/plans-offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainersStaffRoute = TrainersStaffRouteImport.update({
+  id: '/trainers-staff',
+  path: '/trainers-staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/attendance': typeof AttendanceRoute
+  '/audit-logs': typeof AuditLogsRoute
+  '/automation-center': typeof AutomationCenterRoute
+  '/expenses': typeof ExpensesRoute
+  '/income': typeof IncomeRoute
+  '/members': typeof MembersRoute
+  '/memberships': typeof MembershipsRoute
+  '/plans-offers': typeof PlansOffersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/trainers-staff': typeof TrainersStaffRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/attendance': typeof AttendanceRoute
+  '/audit-logs': typeof AuditLogsRoute
+  '/automation-center': typeof AutomationCenterRoute
+  '/expenses': typeof ExpensesRoute
+  '/income': typeof IncomeRoute
+  '/members': typeof MembersRoute
+  '/memberships': typeof MembershipsRoute
+  '/plans-offers': typeof PlansOffersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/trainers-staff': typeof TrainersStaffRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/appointments': typeof AppointmentsRoute
+  '/attendance': typeof AttendanceRoute
+  '/audit-logs': typeof AuditLogsRoute
+  '/automation-center': typeof AutomationCenterRoute
+  '/expenses': typeof ExpensesRoute
+  '/income': typeof IncomeRoute
+  '/members': typeof MembersRoute
+  '/memberships': typeof MembershipsRoute
+  '/plans-offers': typeof PlansOffersRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/trainers-staff': typeof TrainersStaffRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/appointments'
+    | '/attendance'
+    | '/audit-logs'
+    | '/automation-center'
+    | '/expenses'
+    | '/income'
+    | '/members'
+    | '/memberships'
+    | '/plans-offers'
+    | '/reports'
+    | '/settings'
+    | '/trainers-staff'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/analytics'
+    | '/appointments'
+    | '/attendance'
+    | '/audit-logs'
+    | '/automation-center'
+    | '/expenses'
+    | '/income'
+    | '/members'
+    | '/memberships'
+    | '/plans-offers'
+    | '/reports'
+    | '/settings'
+    | '/trainers-staff'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/appointments'
+    | '/attendance'
+    | '/audit-logs'
+    | '/automation-center'
+    | '/expenses'
+    | '/income'
+    | '/members'
+    | '/memberships'
+    | '/plans-offers'
+    | '/reports'
+    | '/settings'
+    | '/trainers-staff'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  AppointmentsRoute: typeof AppointmentsRoute
+  AttendanceRoute: typeof AttendanceRoute
+  AuditLogsRoute: typeof AuditLogsRoute
+  AutomationCenterRoute: typeof AutomationCenterRoute
+  ExpensesRoute: typeof ExpensesRoute
+  IncomeRoute: typeof IncomeRoute
+  MembersRoute: typeof MembersRoute
+  MembershipsRoute: typeof MembershipsRoute
+  PlansOffersRoute: typeof PlansOffersRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  TrainersStaffRoute: typeof TrainersStaffRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/appointments': {
+      id: '/appointments'
+      path: '/appointments'
+      fullPath: '/appointments'
+      preLoaderRoute: typeof AppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance': {
+      id: '/attendance'
+      path: '/attendance'
+      fullPath: '/attendance'
+      preLoaderRoute: typeof AttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit-logs': {
+      id: '/audit-logs'
+      path: '/audit-logs'
+      fullPath: '/audit-logs'
+      preLoaderRoute: typeof AuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation-center': {
+      id: '/automation-center'
+      path: '/automation-center'
+      fullPath: '/automation-center'
+      preLoaderRoute: typeof AutomationCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/expenses': {
+      id: '/expenses'
+      path: '/expenses'
+      fullPath: '/expenses'
+      preLoaderRoute: typeof ExpensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/income': {
+      id: '/income'
+      path: '/income'
+      fullPath: '/income'
+      preLoaderRoute: typeof IncomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members': {
+      id: '/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof MembersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memberships': {
+      id: '/memberships'
+      path: '/memberships'
+      fullPath: '/memberships'
+      preLoaderRoute: typeof MembershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plans-offers': {
+      id: '/plans-offers'
+      path: '/plans-offers'
+      fullPath: '/plans-offers'
+      preLoaderRoute: typeof PlansOffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainers-staff': {
+      id: '/trainers-staff'
+      path: '/trainers-staff'
+      fullPath: '/trainers-staff'
+      preLoaderRoute: typeof TrainersStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  AppointmentsRoute: AppointmentsRoute,
+  AttendanceRoute: AttendanceRoute,
+  AuditLogsRoute: AuditLogsRoute,
+  AutomationCenterRoute: AutomationCenterRoute,
+  ExpensesRoute: ExpensesRoute,
+  IncomeRoute: IncomeRoute,
+  MembersRoute: MembersRoute,
+  MembershipsRoute: MembershipsRoute,
+  PlansOffersRoute: PlansOffersRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  TrainersStaffRoute: TrainersStaffRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
