@@ -7,7 +7,7 @@ export function PageShell({ title }: { title: string }) {
       <div className="welcome">
         <div>
           <h1>{title}</h1>
-          <p>Believer Gym for Ladies & Kids</p>
+          <p>Believer Gym · Unisex Gym</p>
         </div>
         <span className="demo-badge">Phase 1 preview</span>
       </div>

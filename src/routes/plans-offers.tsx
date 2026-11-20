@@ -6,7 +6,7 @@ export const Route = createFileRoute("/plans-offers")({
       { title: "Plans & Offers | Believer Gym" },
       {
         name: "description",
-        content: "Believer Gym plans & offers administration preview for Ladies & Kids.",
+        content: "Believer Gym plans & offers administration preview for a unisex gym.",
       },
       { property: "og:title", content: "Plans & Offers | Believer Gym" },
       {

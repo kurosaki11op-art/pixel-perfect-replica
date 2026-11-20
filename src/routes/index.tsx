@@ -6,13 +6,13 @@ import { Dashboard } from "@/components/gym/dashboard";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard | Believer Gym for Ladies & Kids" },
+      { title: "Dashboard | Believer Gym · Unisex Gym" },
       {
         name: "description",
         content:
           "Believer Gym administration dashboard with demonstration membership, revenue, attendance, and renewal insights.",
       },
-      { property: "og:title", content: "Dashboard | Believer Gym for Ladies & Kids" },
+      { property: "og:title", content: "Dashboard | Believer Gym · Unisex Gym" },
       {
         property: "og:description",
         content:

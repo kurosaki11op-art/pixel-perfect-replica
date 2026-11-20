@@ -6,7 +6,7 @@ export const Route = createFileRoute("/expenses")({
       { title: "Expenses | Believer Gym" },
       {
         name: "description",
-        content: "Believer Gym expenses administration preview for Ladies & Kids.",
+        content: "Believer Gym expenses administration preview for a unisex gym.",
       },
       { property: "og:title", content: "Expenses | Believer Gym" },
       { property: "og:description", content: "Believer Gym expenses administration preview." },

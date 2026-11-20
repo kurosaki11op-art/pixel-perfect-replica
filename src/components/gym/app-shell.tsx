@@ -86,7 +86,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
           <div className="brand-copy">
             <div className="brand-name">BELIEVER GYM</div>
-            <div className="brand-subtitle">FOR LADIES & KIDS</div>
+            <div className="brand-subtitle">UNISEX GYM</div>
           </div>
         </Link>
         <nav className="sidebar-nav">

@@ -6,7 +6,7 @@ export const Route = createFileRoute("/automation-center")({
       { title: "Automation Center | Believer Gym" },
       {
         name: "description",
-        content: "Believer Gym automation center administration preview for Ladies & Kids.",
+        content: "Believer Gym automation center administration preview for a unisex gym.",
       },
       { property: "og:title", content: "Automation Center | Believer Gym" },
       {

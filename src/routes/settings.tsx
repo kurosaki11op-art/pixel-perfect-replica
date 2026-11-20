@@ -6,7 +6,7 @@ export const Route = createFileRoute("/settings")({
       { title: "Settings | Believer Gym" },
       {
         name: "description",
-        content: "Believer Gym settings administration preview for Ladies & Kids.",
+        content: "Believer Gym settings administration preview for a unisex gym.",
       },
       { property: "og:title", content: "Settings | Believer Gym" },
       { property: "og:description", content: "Believer Gym settings administration preview." },

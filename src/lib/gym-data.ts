@@ -11,7 +11,7 @@ export const metrics = [
   {
     label: "Members Currently Inside",
     value: 42,
-    note: "18 ladies · 24 kids",
+    note: "42 members checked in",
     trend: "Now",
     icon: "inside",
   },

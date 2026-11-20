@@ -59,7 +59,7 @@ const actionFields: Record<string, { label: string; type?: string; options?: str
   "Add Member": [
     { label: "Full name" },
     { label: "Phone number", type: "tel" },
-    { label: "Member category", options: ["Ladies", "Kids"] },
+    { label: "Member category", options: ["Adults", "Kids"] },
   ],
   "Create Membership": [
     { label: "Member name" },
@@ -245,7 +245,7 @@ export function Dashboard() {
         </div>
       </section>
       <footer className="dashboard-footer">
-        <span>© 2026 Believer Gym for Ladies & Kids</span>
+        <span>© 2026 Believer Gym · Unisex Gym</span>
         <span className="flex items-center gap-2">
           <span className="demo-badge">Demonstration data</span>
           <span>Sample snapshot · 20 Nov 2026</span>
